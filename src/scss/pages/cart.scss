@@ -1,0 +1,86 @@
+@use "sass:math";
+@use "sass:color";
+@use "_mixins" as *;
+@use "_variables" as *;
+@use "../forms.scss";
+@use "../icons.scss";
+
+.cart {
+	.cart_totals {
+		h2 {
+			margin-bottom: 1rem;
+		}
+	}
+	.actions {
+		button {
+			font-size: 0.875rem !important;
+			font-weight: 600 !important ;
+			text-transform: uppercase !important;
+			padding: 1rem 1.5rem !important;
+			border-radius: 0.9375rem !important;
+			border-radius: 0.9375rem !important;
+			border: rem(1) solid #02dcd9 !important;
+			color: #4599f7 !important;
+			background: transparent !important;
+			&:hover {
+				background: #02dcd9 !important;
+				color: #fff !important;
+			}
+			&:active {
+				background: color.adjust($color: #02dcd9, $lightness: -10%) !important;
+			}
+			&:disabled,
+			&[aria-disabled="true"] {
+				user-select: none !important;
+				opacity: 0.7 !important;
+				pointer-events: none !important;
+			}
+		}
+	}
+	.checkout-button,
+	.wc-backward {
+		font-size: 0.875rem !important;
+		font-weight: 600 !important;
+		text-transform: uppercase !important;
+		padding: 1rem 1.5rem !important;
+		border-radius: 0.9375rem !important;
+
+		min-height: rem(58) !important;
+		display: flex !important;
+		justify-content: space-between !important;
+		align-items: center !important;
+		gap: 1rem !important;
+		border: rem(2) solid #4599f7 !important;
+		background: #4599f7 !important;
+		color: #fff !important;
+		&:hover {
+			background: color.adjust($color: #4599f7, $lightness: -10%) !important;
+			color: #fff !important;
+		}
+		&:active {
+			background: color.adjust($color: #4599f7, $lightness: -15%) !important;
+			color: #fff !important;
+		}
+		&::before {
+			order: 1;
+			@extend %ic;
+			@extend .icon-arrow;
+		}
+		&:disabled,
+		&[aria-disabled="true"] {
+			user-select: none !important;
+			opacity: 0.7 !important;
+			pointer-events: none !important;
+		}
+	}
+	.wc-backward {
+		width: fit-content !important;
+	}
+	.woocommerce-message {
+		background: #e8f2fa !important;
+		border-top-color: $accent !important;
+		&::before {
+			color: $accent !important;
+		}
+	}
+}

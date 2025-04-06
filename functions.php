@@ -67,3 +67,27 @@ function set_global_acf_fields()
 add_action('wp', 'set_global_acf_fields');
 add_filter('wpcf7_autop_or_not', '__return_false');
 add_theme_support('woocommerce');
+
+add_action('wp_ajax_update_cart', 'update_cart');
+add_action('wp_ajax_nopriv_update_cart', 'update_cart');
+
+function update_cart()
+{
+	if (WC()->cart) {
+
+		WC()->cart->calculate_totals();
+
+
+		$cart_count = WC()->cart->get_cart_contents_count();
+		$cart_total = WC()->cart->get_cart_total();
+
+		wp_send_json_success(array(
+			'count' => $cart_count,
+			'total' => $cart_total
+		));
+	}
+	wp_die();
+}
+
+
+remove_action('woocommerce_add_to_cart', 'wc_add_to_cart_message', 10);

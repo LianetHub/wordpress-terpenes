@@ -5,7 +5,7 @@
         <h1 class="article__title gradient-text"><?php the_title(); ?></h1>
         <div class="article__header">
             <div class="row">
-                <div class="col-6">
+                <div class="col-lg-6">
                     <div class="article__image">
                         <?php if (has_post_thumbnail()) : ?>
                             <?php the_post_thumbnail('full'); ?>
@@ -14,7 +14,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6">
                     <div class="article__main">
                         <time datetime="<?php the_time('c'); ?>" class="article__time icon-calendar"><?php the_time('d.m.Y'); ?></time>
                         <p class="article__desc">
@@ -61,7 +61,7 @@ if ($query->have_posts()) :
                     <?php
                     while ($query->have_posts()) : $query->the_post();
                     ?>
-                        <div class="col-4">
+                        <div class="col-lg-4 col-sm-6">
                             <?php require(TEMPLATE_PATH . '_blog-card.php'); ?>
                         </div>
                     <?php

@@ -5,16 +5,33 @@
 @use "icons";
 
 .promo {
-	padding: 0 0 2rem;
+	padding: 2rem 0;
+	@media (min-width: $md3) {
+		padding: 0 0 2rem;
+	}
 	& + .info {
 		padding-top: 6rem;
 	}
 	// .promo__row
 	&__row {
 		align-items: center;
+		display: flex;
+		@media (max-width: $md3) {
+			flex-direction: column;
+			text-align: center;
+			--gutter-x: 0;
+			--gutter-y: 0;
+			& .col-lg-6 {
+				display: contents;
+			}
+		}
 	}
 	// .promo__title
 	&__title {
+		@media (max-width: $md3) {
+			margin-left: -0.5rem;
+			margin-right: -0.5rem;
+		}
 	}
 	// .promo__body
 	&__body {
@@ -22,26 +39,54 @@
 	}
 	// .promo__offer
 	&__offer {
-		padding-top: 3rem;
+		display: contents;
+		@media (min-width: $md3) {
+			display: block;
+			padding-top: 3rem;
+		}
 	}
 	// .promo__subtitle
 	&__subtitle {
-		margin-top: 2.75rem;
+		order: 1;
+		margin-top: 1rem;
+		@media (min-width: $md3) {
+			margin-top: 2.75rem;
+		}
 	}
 	// .promo__btn
 	&__btn {
-		margin-top: 4.12rem;
-		max-width: 23.75rem;
+		order: 1;
+		margin-top: 1rem;
+		max-width: 100%;
+		@media (min-width: $md5) {
+			max-width: 23.75rem;
+		}
+		@media (min-width: $md3) {
+			margin-top: 4.12rem;
+		}
 	}
 	// .promo__image
 	&__image {
-		margin-top: -1rem;
-		margin-left: 1rem;
-		width: 60rem;
-		flex-shrink: 0;
-		clip-path: path(
-			"M487.337 0.387459C561.063 -0.34447 636.505 11.0811 700.886 37.1402C764.566 62.9156 811.926 103.959 850.175 147.251C886.666 188.554 899.584 235.552 917.173 281.943C935.628 330.617 971.855 379.652 956.663 428.109C941.393 476.811 884.348 512.717 833.771 547.952C784.987 581.938 733.607 617.124 666.184 630.474C600.438 643.493 530.688 624.608 461.641 621.639C392.753 618.677 318.897 635.721 257.567 612.902C196.235 590.082 173.641 538.603 133.409 499.513C93.9544 461.179 42.7968 427.933 21.614 383.651C-0.604194 337.205 -5.86487 287.186 9.39396 240.264C24.8574 192.713 60.6257 149.202 109.248 114.173C157.042 79.7397 221.784 60.4733 285.617 41.2629C350.416 21.7618 415.727 1.09839 487.337 0.387459Z"
-		);
+		aspect-ratio: math.div(960, 638);
+		clip-path: url(#promo-clip);
+		margin-top: 1rem;
+		margin-right: -6rem;
+		margin-left: 1.75rem;
+		@media (min-width: $md5) {
+			margin-right: 0;
+			margin-left: 0;
+		}
+		@media (min-width: $md4) {
+			width: 40rem;
+		}
+		@media (min-width: $md3) {
+			margin-top: 0;
+		}
+		@media (min-width: $md2) {
+			width: 60rem;
+			margin-top: -1rem;
+			margin-left: 1rem;
+		}
 	}
 	// .promo__desc
 	&__desc {
@@ -199,7 +244,11 @@
 	}
 	// .clients__footer
 	&__footer {
-		padding: 0 1.44rem;
+		text-align: center;
+		@media (min-width: $md3) {
+			padding: 0 1.44rem;
+			text-align: left;
+		}
 	}
 	// .clients__footer-caption
 	&__footer-caption {
@@ -227,7 +276,12 @@
 	&__header {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		flex-direction: column;
+		gap: 0.94rem;
+		@media (min-width: $md5) {
+			flex-direction: row;
+			justify-content: space-between;
+		}
 	}
 	// .faq__title
 	&__title {
@@ -242,7 +296,10 @@
 	// .faq__item
 	&__item {
 		&:not(:last-child) {
-			margin-bottom: 1.87rem;
+			margin-bottom: 1.25rem;
+			@media (min-width: $md3) {
+				margin-bottom: 1.87rem;
+			}
 		}
 	}
 	// .faq__item-title
@@ -255,10 +312,16 @@
 		gap: 1rem;
 		text-align: left;
 		color: #000;
-		font-size: 1.375rem;
+
 		font-weight: 600;
-		padding: 1.44rem 1.44rem 1.44rem 2.44rem;
+
 		width: 100%;
+		font-size: 1.125rem;
+		padding: 1.25rem 1rem 1.25rem 0.75rem;
+		@media (min-width: $md3) {
+			padding: 1.44rem 1.44rem 1.44rem 2.44rem;
+			font-size: 1.375rem;
+		}
 		&::before {
 			color: #4599f7;
 			flex-shrink: 0;
@@ -275,10 +338,12 @@
 	// .faq__item-answer
 	&__item-answer {
 		display: none;
-		margin-top: 1.75rem;
 		color: #000;
-
-		font-size: 1.125rem;
 		line-height: 146.134%;
+		margin-top: 1.25rem;
+		@media (min-width: $md3) {
+			font-size: 1.125rem;
+			margin-top: 1.75rem;
+		}
 	}
 }

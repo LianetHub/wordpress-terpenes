@@ -122,6 +122,18 @@ h6,
 	}
 }
 
+.tooltip {
+	display: none;
+	position: absolute;
+	background-color: $text;
+	color: #fff;
+	padding: rem(5);
+	border-radius: rem(8);
+	font-size: rem(12);
+	z-index: 10;
+	max-width: rem(280);
+}
+
 .order-first {
 	order: -1;
 }
@@ -156,6 +168,15 @@ h6,
 		&:hover {
 			background-color: color.adjust($color: #0f1419, $lightness: 10%);
 		}
+	}
+}
+
+.clipped {
+	position: relative;
+	& svg {
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 }
 
@@ -236,28 +257,16 @@ h6,
 
 .swiper-button-next,
 .swiper-button-prev {
-	position: static;
-	top: auto;
-	left: auto;
-	margin: 0;
-	transform: none;
-	transition: color 0.3s ease 0s;
-	color: #fff;
+	color: #4599f7;
 	transition: color 0.3s ease 0s, opacity 0.3s ease 0s, background-color 0.3s ease 0s, border-color 0.3s ease 0s;
 	z-index: 2;
-	font-size: 1.75rem;
-	width: 1.75rem;
-	height: 1.75rem;
+	width: 1.5rem;
+	height: 1.5rem;
 	&::after {
-		display: none;
+		font-size: 1.75rem;
 	}
-	@media (min-width: $md3) {
-		width: 2.5rem;
-		height: 2.5rem;
-		font-size: 2.5rem;
-		&::after {
-			font-size: 1rem;
-		}
+	@media (max-width: $md5) {
+		display: none;
 	}
 	@media (any-hover: hover) {
 		&:hover {
@@ -266,14 +275,14 @@ h6,
 	}
 }
 
-// .swiper-button-next {
-// 	@extend %ic;
-// 	@extend .icon-next;
-// }
-// .swiper-button-prev {
-// 	@extend %ic;
-// 	@extend .icon-prev;
-// }
+@media (min-width: $md5) {
+	.swiper-button-next {
+		right: -3rem;
+	}
+	.swiper-button-prev {
+		left: -3rem;
+	}
+}
 
 .swiper-pagination {
 	position: static;

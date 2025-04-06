@@ -63,13 +63,14 @@ $(function () {
         const $target = $(e.target);
 
         //  menu
-        // if ($target.closest('.header__menu-btn').length) {
-        //     $('.header').toggleClass('open-menu');
-        // }
+        if ($target.closest('.header__menu-toggler').length) {
+            $('.header').toggleClass('open-menu');
+            $('body').toggleClass('open-menu');
+        }
 
-        // if ($target.is('.wrapper') && $('.header').hasClass('open-menu')) {
-        //     $('.header').removeClass('open-menu');
-        // }
+        if ($target.is('.wrapper') && $('.header').hasClass('open-menu')) {
+            $('.header').removeClass('open-menu');
+        }
 
         // faq accordion
         if ($target.closest('.faq__item-title').length) {
@@ -78,120 +79,50 @@ $(function () {
             $faqItem.next('.faq__item-answer').slideToggle()
         }
 
+    });
 
 
+    $('[data-tooltip]').hover(function () {
+        var tooltipText = $(this).data('tooltip');
+        var tooltip = $('<div class="tooltip"></div>').text(tooltipText);
 
+        $('body').append(tooltip);
 
+        var offset = $(this).offset();
+        tooltip.css({
+            top: offset.top - tooltip.outerHeight() - 5,
+            left: offset.left + $(this).outerWidth() / 2 - tooltip.outerWidth() / 2
+        });
 
-        // // Открытие/закрытие списка локаций
-        // if ($target.closest('.sign-lesson__location-selected').length) {
-        //     const $selectedBtn = $target.closest('.sign-lesson__location-selected');
-        //     const $locationList = $selectedBtn.siblings('.sign-lesson__location-list');
-
-        //     $selectedBtn.toggleClass('active');
-        //     $locationList.toggleClass('open');
-        // }
-
-        // // Закрытие списка при клике вне блока
-        // if (!$target.closest('.sign-lesson__location').length) {
-        //     $('.sign-lesson__location-selected').removeClass('active');
-        //     $('.sign-lesson__location-list').removeClass('open');
-        // }
-
-        // // Выбор элемента из списка локаций
-        // if ($target.closest('.sign-lesson__location-item').length) {
-        //     const $locationItem = $target.closest('.sign-lesson__location-item');
-        //     const $locationWrapper = $locationItem.closest('.sign-lesson__location');
-        //     const $locationSelected = $locationWrapper.find('.sign-lesson__location-selected');
-        //     const $locationList = $locationWrapper.find('.sign-lesson__location-list');
-        //     const $contentBlocks = $('.sign-lesson__content');
-
-        //     // Обновление активного элемента списка
-        //     $locationList.find('.sign-lesson__location-item').removeClass('active');
-        //     $locationItem.addClass('active');
-
-        //     // Обновление кнопки
-        //     $locationSelected.text($locationItem.text());
-        //     $locationSelected.removeClass('active');
-        //     $locationList.removeClass('open');
-
-        //     // Обновление контента
-        //     $contentBlocks.removeClass('active').eq($locationItem.index()).addClass('active');
-        // }
-
-        // // Открытие promo__info при клике на form__tooltip
-        // if ($target.closest('.form__tooltip').length) {
-        //     const $promoForm = $target.closest('.promo__form');
-        //     const $promoInfo = $promoForm.siblings('.promo__info');
-
-        //     $promoForm.addClass('hidden');
-        //     $promoInfo.removeClass('hidden');
-        // }
-
-        // // Закрытие promo__info при клике на promo__info-close
-        // if ($target.closest('.promo__info-close').length) {
-        //     const $promoInfo = $target.closest('.promo__info');
-        //     const $promoForm = $promoInfo.siblings('.promo__form');
-
-        //     $promoInfo.addClass('hidden');
-        //     $promoForm.removeClass('hidden');
-        // }
-
-        // // header location
-        // if ($target.is('.header__location-btn')) {
-        //     $target.toggleClass('active');
-        //     $('.header__location-list').toggleClass('active');
-        // }
-
-
-        // if ($('body').hasClass('_touch')) {
-        //     if ($target.closest('.menu__link').length && $target.closest('.menu__item.has-children').length) {
-        //         e.preventDefault();
-        //         const $menuLink = $target.closest('.menu__link');
-        //         const $submenu = $menuLink.next('.submenu');
-
-        //         const isActive = $menuLink.hasClass('active');
-
-        //         $('.menu__link').removeClass('active');
-        //         $('.submenu').removeClass('open');
-
-        //         if (!isActive) {
-        //             $menuLink.addClass('active');
-        //             $submenu.addClass('open');
-        //         }
-        //     }
-        // }
-
-        // if ($target.closest('.submenu__close').length) {
-        //     $('.menu__link').removeClass('active');
-        //     $('.submenu').removeClass('open');
-        // }
-
-
+        tooltip.fadeIn(200);
+    }, function () {
+        $('.tooltip').remove();
     });
 
 
     //  sliders
-    // if ($('.atmosphere__slider').length) {
-    //     new Swiper('.atmosphere__slider', {
-    //         spaceBetween: 10,
-    //         slidesPerView: 1.15,
-    //         navigation: {
-    //             prevEl: '.atmosphere__prev',
-    //             nextEl: '.atmosphere__next',
-    //         },
-    //         pagination: {
-    //             el: '.atmosphere__pagination',
-    //             clickable: true
-    //         },
-    //         breakpoints: {
-    //             797.98: {
-    //                 slidesPerView: 1,
-    //                 spaceBetween: 0
-    //             }
-    //         }
-    //     })
-    // }
+    if ($('.single-product__slider').length) {
+        new Swiper('.single-product__slider .swiper', {
+            spaceBetween: 20,
+            slidesPerView: 1.5,
+            loop: true,
+            navigation: {
+                prevEl: '.single-product__prev',
+                nextEl: '.single-product__next',
+            },
+            breakpoints: {
+                575.98: {
+                    slidesPerView: 2,
+                },
+                991.98: {
+                    slidesPerView: 3,
+                },
+                1199.98: {
+                    slidesPerView: 4,
+                }
+            }
+        })
+    }
 
     // function getMobileSlider(sliderName, options) {
 

@@ -27,7 +27,7 @@ get_header(); ?>
     ?>
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-lg-6">
                 <h1 class="contacts__title gradient-text">Our Contacts</h1>
 
                 <?php if ($company_address || $phone_number || $emergency_contact_number || $email): ?>
@@ -103,7 +103,7 @@ get_header(); ?>
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="col-6">
+            <div class="col-lg-6">
                 <div class="contacts__map">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d486.090253302576!2d100.91937391028138!3d12.925579142371916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31029596b85ea3cb%3A0xd9e2db7c1559f4b5!2zMTQwIOC4nuC4seC4l-C4ouC4suC4o-C4uOC5iOC4h-C5gOC4o-C4t-C4reC4hyDguIvguK3guKIgMTEgTXVhbmcgUGF0dGF5YSwgQW1waG9lIEJhbmcgTGFtdW5nLCBDaGFuZyBXYXQgQ2hvbiBCdXJpIDIwMTUwLCDQotCw0LjQu9Cw0L3QtA!5e0!3m2!1sru!2sro!4v1743609706787!5m2!1sru!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>

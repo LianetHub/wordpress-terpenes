@@ -7,7 +7,7 @@
             <div class="row">
                 <?php if (have_posts()) : ?>
                     <?php while (have_posts()) : the_post(); ?>
-                        <div class="col-4">
+                        <div class="col-lg-4 col-sm-6">
                             <?php require(TEMPLATE_PATH . '_blog-card.php'); ?>
                         </div>
                     <?php endwhile; ?>

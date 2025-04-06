@@ -2,27 +2,26 @@
 
 $(function () {
 
-    $('#load-more').on('click', function (e) {
-        e.preventDefault();
-        loadMorePosts();
-    });
 
-    function loadMorePosts() {
-        var page = 1;
+    $('body').on('updated_wc_div', function () {
+        $.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type: 'POST',
+            data: {
+                action: 'update_cart'
+            },
+            success: function (response) {
+                if (response.success) {
 
-        var data = {
-            action: 'load_more',
-            page: page,
-            nonce: blog_load_more.nonce
-        };
-
-        $.post(blog_load_more.ajax_url, data, function (response) {
-            if (response) {
-                $('.blog .row').append(response);
-                page++;
+                    $('.cart-count').attr('data-count', response.data.count);
+                    $('.cart-total').html(response.data.total);
+                }
             }
         });
-    }
+    });
+
+
+
 })
 
 

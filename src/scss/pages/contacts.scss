@@ -4,9 +4,27 @@
 @use "_variables" as *;
 
 .contacts {
-	padding: 0 0 8.19rem 0;
+	padding: 0 0 rem(20) 0;
+	@media (min-width: $md4) {
+		padding: 0 0 8.19rem 0;
+	}
+	.row {
+		@media (max-width: $md5) {
+			--gutter-x: 0;
+			--gutter-y: 0;
+			flex-direction: column;
+			.col-lg-6 {
+				display: contents;
+			}
+		}
+	}
 	// .contacts__title
 	&__title {
+		order: -1;
+		text-align: center;
+		@media (min-width: $md5) {
+			text-align: left;
+		}
 	}
 	// .contacts__list
 	&__list {
@@ -22,19 +40,27 @@
 		align-items: center;
 		gap: 0.94rem;
 		&:not(:last-child) {
-			margin-bottom: 1.88rem;
+			margin-bottom: 1.69rem;
+			@media (min-width: $md5) {
+				margin-bottom: 1.88rem;
+			}
 		}
 	}
 	// .contacts__item-icon
 	&__item-icon {
-		width: 4.375rem;
-		height: 4.375rem;
 		flex-shrink: 0;
 		border-radius: 50%;
 		background: linear-gradient(92deg, #01ecd3 4.16%, #01b5e7 85.09%);
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		width: 3.0625rem;
+		height: 3.0625rem;
+		padding: 0.56rem;
+		@media (min-width: $md5) {
+			width: 4.375rem;
+			height: 4.375rem;
+		}
 	}
 	// .contacts__item-content
 	&__item-content {
@@ -46,6 +72,7 @@
 	// .contacts__item-row
 	&__item-row {
 		& a {
+			white-space: nowrap;
 			transition: color 0.3s ease;
 			@media (any-hover: hover) {
 				&:hover {
@@ -57,10 +84,15 @@
 	}
 	// .contacts__socials
 	&__socials {
-		margin-top: 4.71rem;
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.83rem;
+		margin-top: 1.5rem;
+		justify-content: center;
+		@media (min-width: $md5) {
+			justify-content: flex-start;
+			margin-top: 4.71rem;
+		}
 	}
 	// .contacts__social
 	&__social {
@@ -77,9 +109,17 @@
 	&__map {
 		position: relative;
 		width: 100%;
-		height: rem(524);
-		max-width: 35.5rem;
-		margin-left: auto;
+		order: -1;
+		height: 21.56425rem;
+		margin-top: 1.56rem;
+		@media (min-width: $md5) {
+			height: rem(524);
+			margin-top: 0;
+		}
+		@media (min-width: $md3) {
+			max-width: 35.5rem;
+			margin-left: auto;
+		}
 		& iframe {
 			position: absolute;
 			top: 0;

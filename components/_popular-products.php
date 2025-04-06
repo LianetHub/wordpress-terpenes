@@ -21,8 +21,8 @@
                     while ($loop->have_posts()) : $loop->the_post();
                         global $product;
                 ?>
-                        <div class="col-3">
-                            <? require_once(TEMPLATE_PATH . '_product.php'); ?>
+                        <div class="col-lg-3 col-6">
+                            <? require(TEMPLATE_PATH . '_product.php'); ?>
                         </div>
                 <? endwhile;
                     wp_reset_postdata();

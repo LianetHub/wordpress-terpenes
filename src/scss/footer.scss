@@ -4,11 +4,13 @@
 @use "_variables" as *;
 
 .footer {
-	background: linear-gradient(92deg, #01ecd3 4.16%, #01b5e7 85.09%), #4599f7;
-	color: #fff;
-	padding: rem(33) 0 rem(29);
-	@media (min-width: $md5) {
-		padding: rem(23) 0 rem(46);
+	&__wrapper {
+		background: linear-gradient(92deg, #01ecd3 4.16%, #01b5e7 85.09%), #4599f7;
+		color: #fff;
+		padding: rem(33) 0 rem(29);
+		@media (min-width: $md5) {
+			padding: rem(23) 0 rem(46);
+		}
 	}
 	// .footer__main
 	&__main {

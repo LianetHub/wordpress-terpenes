@@ -4,79 +4,166 @@
 @use "_variables" as *;
 
 .header {
-	padding: 1rem 0;
+	padding: 0.5rem 0;
+	@media (min-width: $md3) {
+		padding: 1rem 0;
+	}
 	// .header__body
 	&__body {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0 rem(10);
+		@media (min-width: $md3) {
+			padding: 0 rem(10);
+		}
 	}
+
 	// .header__logo
 	&__logo {
-		max-width: rem(259);
+		max-width: 4.125rem;
+		margin: 0 auto;
+		@media (min-width: $md5) {
+			max-width: 6.125rem;
+		}
+		@media (min-width: $md3) {
+			margin: 0;
+			max-width: rem(259);
+		}
 	}
 	// .header__menu
 	&__menu {
-		padding-right: 6.5rem;
-		& ul {
-			display: flex;
-			gap: 2.5rem;
-			font-size: 1rem;
-			& a {
-				transition: color 0.3s ease;
-				@media (any-hover: hover) {
-					&:hover {
-						color: $accent;
-					}
-				}
-				&[aria-current="page"] {
-					color: $accent;
-				}
-			}
+		@media (min-width: $md2) {
+			padding-right: 6.5rem;
 		}
 	}
 	// .header__info
 	&__info {
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
+		justify-content: flex-end;
+		flex: 0 0 calc(50% - 3.0625rem);
+		gap: 0.37rem;
+		@media (min-width: $md3) {
+			gap: 0.75rem;
+			flex: 0 1 auto;
+		}
 	}
 	// .header__price
 	&__price {
-		font-size: 1.125rem;
+		white-space: nowrap;
+		font-size: 1rem;
+		@media (min-width: $md3) {
+			font-size: 1.125rem;
+		}
 	}
 	// .header__cart
 	&__cart {
-		width: 3.4375rem;
-		height: 3.4375rem;
 		flex-shrink: 0;
 		border: rem(2) solid #000;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		border-radius: 50%;
-		font-size: 1.5rem;
+
 		position: relative;
 		transition: background-color 0.3s ease, color 0.3s ease;
-		& span {
+		width: 2rem;
+		height: 2rem;
+		font-size: 1.125rem;
+		&[data-count="0"] {
+			&::after {
+				display: none !important;
+			}
+		}
+		&::after {
+			content: attr(data-count);
 			position: absolute;
-			width: 1.0625rem;
-			height: 1.0625rem;
-			font-size: 0.625rem;
-			top: 0;
-			right: 0;
 			background: #4599f7;
 			border-radius: 50%;
 			color: #fff;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			width: 0.875rem;
+			height: 0.875rem;
+			font-size: 0.625rem;
+			top: -0.25rem;
+			right: -0.5rem;
+			@media (min-width: $md3) {
+				top: 0;
+				right: 0;
+				width: 1.0625rem;
+				height: 1.0625rem;
+				font-size: 0.625rem;
+			}
+		}
+		@media (min-width: $md3) {
+			font-size: 1.5rem;
+			width: 3.4375rem;
+			height: 3.4375rem;
 		}
 		@media (any-hover: hover) {
 			&:hover {
 				background: #000;
 				color: #fff;
+			}
+		}
+	}
+	// .header__actions
+	&__actions {
+		display: flex;
+		gap: 1.81rem;
+		order: -1;
+		flex: 0 0 calc(50% - 3.0625rem);
+		@media (min-width: $md3) {
+			display: none;
+		}
+	}
+	// .header__search
+	&__search {
+		font-size: 2rem;
+	}
+}
+
+.menu {
+	@media (max-width: $md3) {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: rem(320);
+		height: 100%;
+		background: #fff;
+		z-index: 10;
+		color: $text;
+		transform: translateX(-100%);
+		transition: transform 0.3s ease;
+		padding: 6rem 1.25rem 4rem;
+		.header.open-menu & {
+			transform: translateX(0);
+		}
+	}
+	&__list {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 2.5rem;
+		row-gap: 1.5rem;
+		font-size: 1.5rem;
+		@media (min-width: $md3) {
+			row-gap: 1rem;
+			font-size: 1rem;
+			flex-wrap: wrap;
+			flex-direction: row;
+		}
+		& a {
+			transition: color 0.3s ease;
+			@media (any-hover: hover) {
+				&:hover {
+					color: $accent;
+				}
+			}
+			&[aria-current="page"] {
+				color: $accent;
 			}
 		}
 	}
@@ -86,39 +173,42 @@
 	flex-shrink: 0;
 	display: flex;
 	flex-flow: column nowrap;
-	align-items: flex-end;
+	align-items: center;
 	justify-content: center;
 	padding: 0;
-	width: rem(24);
-	height: rem(24);
+	border-radius: rem(4);
+	width: 2rem;
+	height: 2rem;
+	border: rem(2) solid;
 	z-index: 11;
-
+	@media (min-width: $md3) {
+		display: none;
+	}
 	& span {
 		display: block;
-		padding: rem(2) rem(0);
-		width: 100%;
+		padding: rem(2) rem(4);
 		transition: transform 0.4s ease 0.4s, opacity 0.4s ease 0.4s;
-		will-change: contents;
-		pointer-events: none;
-		& svg {
+		will-change: transform;
+		&::before {
+			content: "";
 			display: block;
-			height: rem(3);
-			width: 100%;
-			color: currentColor;
+			height: rem(2);
+			border-radius: rem(2);
+			width: rem(14);
+			background: currentColor;
 			transition: transform 0.3s ease 0s;
-			will-change: contents;
+			will-change: transform;
 		}
 	}
 	.header.open-menu & {
-		color: $text;
 		& span {
 			transition: transform 0.3s ease 0s, opacity 0.3s ease 0s;
-			& svg {
+			&::before {
 				transition: transform 0.45s ease 0.35s, width 0.3s ease 0s;
 			}
 			&:first-child {
-				transform: translateY(rem(7));
-				& svg {
+				transform: translateY(rem(6));
+				&::before {
 					transform: rotate(-135deg);
 				}
 			}
@@ -126,8 +216,8 @@
 				opacity: 0;
 			}
 			&:nth-child(3) {
-				transform: translateY(rem(-7));
-				& svg {
+				transform: translateY(rem(-6));
+				&::before {
 					transform: rotate(-225deg);
 				}
 			}

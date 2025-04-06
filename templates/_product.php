@@ -16,7 +16,7 @@
                 <?php the_post_thumbnail('medium'); ?>
             <?php endif; ?>
         </a>
-        <div class="product__detail">
+        <div class="product__detail" data-tooltip="<? echo $product->get_short_description(); ?>">
             <div class="product__detail-title icon-info">More details</div>
         </div>
     </div>
@@ -40,9 +40,21 @@
             </div>
             <div class="product__price"><?php echo $product->get_price_html(); ?></div>
         </div>
+        <div class="product__cart">
+            <?php
 
-        <?php
-        woocommerce_template_loop_add_to_cart();
-        ?>
+            $product_id = get_the_ID();
+            $in_cart = false;
+
+            if (WC()->cart->find_product_in_cart(WC()->cart->generate_cart_id($product_id))) {
+                $in_cart = true;
+            }
+
+            if ($in_cart) : ?>
+                <a href="<?php echo esc_url(WC()->cart->get_remove_url(WC()->cart->generate_cart_id($product_id))); ?>" class="btn btn-secondary icon-shopping-bag">remove from cart</a>
+            <?php else : ?>
+                <?php woocommerce_template_single_add_to_cart(); ?>
+            <?php endif; ?>
+        </div>
     </div>
 </div>

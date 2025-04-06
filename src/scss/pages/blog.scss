@@ -4,14 +4,19 @@
 @use "_variables" as *;
 
 .blog {
-	padding: 0 0 rem(100) 0;
-	// .blog__title
-	&__title {
-		width: fit-content;
+	padding: 0 0 rem(20) 0;
+	@media (min-width: $md4) {
+		padding: 0 0 rem(100) 0;
 	}
 	// .blog__title
 	&__title {
+		text-align: center;
+		@media (min-width: $md5) {
+			width: fit-content;
+			text-align: left;
+		}
 	}
+
 	// .blog__body
 	&__body {
 		margin-top: rem(24);
@@ -65,8 +70,12 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		flex-wrap: wrap-reverse;
 		gap: 1rem;
 		width: 100%;
+		@media (min-width: $md4) {
+			flex-wrap: nowrap;
+		}
 	}
 	// .blog__card-name
 	&__card-name {

@@ -1,7 +1,7 @@
 <section class="clients">
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-lg-6">
                 <div class="clients__header">
                     <h2 class="clients__title">Our Clients</h2>
                     <p class="clients__subtitle subtitle">
@@ -22,7 +22,7 @@
                 endif; ?>
             </div>
 
-            <div class="col-6">
+            <div class="col-lg-6">
                 <?php if (have_rows('clients_cards')) :
                     $counter = 1;
                     reset_rows('clients_cards');
