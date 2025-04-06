@@ -1,0 +1,139 @@
+@use "sass:math";
+@use "sass:color";
+@use "_mixins" as *;
+@use "_variables" as *;
+
+.footer {
+	background: linear-gradient(92deg, #01ecd3 4.16%, #01b5e7 85.09%), #4599f7;
+	color: #fff;
+	padding: rem(33) 0 rem(29);
+	@media (min-width: $md5) {
+		padding: rem(23) 0 rem(46);
+	}
+	// .footer__main
+	&__main {
+		display: flex;
+		align-items: center;
+		@media (min-width: $md4) {
+			align-items: flex-start;
+		}
+		@media (min-width: $md2) {
+			padding-right: 4rem;
+		}
+	}
+	// .footer__logo
+	&__logo {
+		max-width: rem(96);
+		display: inline-block;
+		@media (min-width: $md5) {
+			max-width: rem(104);
+		}
+	}
+	// .footer__menu
+	&__menu {
+		margin: 0 auto;
+		padding: 0 1rem;
+		& ul {
+			font-size: 1rem;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			gap: rem(12);
+			row-gap: rem(6);
+			font-weight: 400;
+			@media (min-width: $md4) {
+				column-gap: 0.75rem;
+				row-gap: 0.75rem;
+				flex-direction: column;
+				align-items: flex-start;
+			}
+			& a {
+				transition: opacity 0.3s ease;
+				@media (any-hover: hover) {
+					&:hover {
+						text-decoration: underline;
+						opacity: 0.8;
+					}
+				}
+			}
+		}
+	}
+	// .footer__body
+	&__body {
+		font-size: 1rem;
+		line-height: 145.503%;
+		@media (min-width: $md2) {
+			padding-top: 0.5rem;
+			padding-left: rem(40);
+		}
+	}
+	// .footer__address
+	&__address {
+	}
+	// .footer__registration
+	&__registration {
+		margin-top: 1.5rem;
+		@media (min-width: $md5) {
+			margin-top: 0;
+		}
+	}
+	// .footer__contacts
+	&__contacts {
+		margin-top: 1.5rem;
+		@media (min-width: $md5) {
+			margin-top: 0.69rem;
+		}
+	}
+	// .footer__contacts-item
+	&__contacts-item {
+		display: flex;
+		align-items: center;
+		gap: 0.56rem;
+		&::before {
+			width: 1rem;
+			height: 1rem;
+			flex-shrink: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 0.875rem;
+		}
+		&.icon-envelope {
+			&::before {
+				font-size: 0.75rem;
+			}
+		}
+		& a {
+			transition: opacity 0.3s ease;
+			@media (any-hover: hover) {
+				&:hover {
+					text-decoration: underline;
+					opacity: 0.8;
+				}
+			}
+		}
+	}
+	// .footer__socials
+	&__socials {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.38rem;
+		margin-top: 1.5rem;
+		@media (min-width: $md5) {
+			margin-top: 2rem;
+		}
+	}
+	// .footer__social
+	&__social {
+		width: 1.8125rem;
+		height: 1.8125rem;
+		flex-shrink: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		transition: background-color 0.3s ease;
+	}
+}

@@ -1,0 +1,69 @@
+<?php
+define('COMPONENTS_PATH', dirname(__FILE__) . '/components/');
+define('TEMPLATE_PATH', dirname(__FILE__) . '/templates/');
+
+function theme_enqueue_styles()
+{
+
+	wp_enqueue_style('swiper', get_template_directory_uri() . '/assets/css/libs/swiper-bundle.min.css');
+	wp_enqueue_style('fancybox', get_template_directory_uri() . '/assets/css/libs/fancybox.css');
+	wp_enqueue_style('input-tel', get_template_directory_uri() . '/assets/css/libs/input-tel.css');
+	wp_enqueue_style('reset', get_template_directory_uri() . '/assets/css/reset.min.css');
+	wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/css/style.min.css');
+}
+add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
+
+
+function theme_enqueue_scripts()
+{
+	wp_deregister_script('jquery');
+
+	wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/js/libs/jquery-3.7.1.min.js', array(), null, true);
+
+	wp_enqueue_script('swiper-js', get_template_directory_uri() . '/assets/js/libs/swiper-bundle.min.js', array(), null, true);
+	wp_enqueue_script('fancybox-js', get_template_directory_uri() . '/assets/js/libs/fancybox.umd.js', array(), null, true);
+	wp_enqueue_script('imask-js', get_template_directory_uri() . '/assets/js/libs/imask.js', array(), null, true);
+	wp_enqueue_script('intlTelInput-js', get_template_directory_uri() . '/assets/js/libs/intlTelInput.min.js', array(), null, true);
+
+	wp_enqueue_script('ui-js', get_template_directory_uri() . '/assets/js/ui.min.js', array(), null, true);
+	wp_enqueue_script('app-js', get_template_directory_uri() . '/assets/js/app.min.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
+
+function allow_svg_uploads($mimes)
+{
+
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter('upload_mimes', 'allow_svg_uploads');
+
+
+function register_my_menus()
+{
+	register_nav_menus([
+		'main_menu' => 'main menu',
+	]);
+}
+add_action('after_setup_theme', 'register_my_menus');
+
+
+function set_global_acf_fields()
+{
+	$GLOBALS['global_acf_fields'] = [
+		'company_address' => get_field('company_address', 'option'),
+		'phone_number' => get_field('phone_number', 'option'),
+		'emergency_contact_number' => get_field('emergency_contact_number', 'option'),
+		'email' => get_field('email', 'option'),
+		'phone_number' => get_field('phone_number', 'option'),
+		'registration_number' => get_field('registration_number', 'option'),
+		'linkedin_url' => get_field('linkedin_url', 'option'),
+		'instagram_url' => get_field('instagram_url', 'option'),
+		'facebook_url' => get_field('facebook_url', 'option'),
+		'x_url' => get_field('x_url', 'option'),
+	];
+}
+
+add_action('wp', 'set_global_acf_fields');
+add_filter('wpcf7_autop_or_not', '__return_false');
+add_theme_support('woocommerce');

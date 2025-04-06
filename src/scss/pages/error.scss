@@ -1,0 +1,15 @@
+.error-404 {
+	padding: 5rem 0;
+	// .error-404__body
+	&__body {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+	// .error-404__title
+	&__title {
+	}
+	// .error-404__subtitle
+	&__subtitle {
+	}
+}
