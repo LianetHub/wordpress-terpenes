@@ -240,6 +240,18 @@
 			color: #fff;
 		}
 	}
+	&.btn-primary-outline {
+		border: rem(2) solid #4599f7;
+		color: #4599f7;
+		&:hover {
+			background: #4599f7;
+			color: #fff;
+		}
+		&:active {
+			background: color.adjust($color: #4599f7, $lightness: -10%);
+			color: #fff;
+		}
+	}
 	&.btn-secondary {
 		border-radius: 0.9375rem;
 		border: rem(1) solid #02dcd9;

@@ -91,3 +91,56 @@ function update_cart()
 
 
 remove_action('woocommerce_add_to_cart', 'wc_add_to_cart_message', 10);
+
+function custom_product_filter($query)
+{
+	if (!is_admin() && $query->is_main_query() && is_post_type_archive('product')) {
+
+		if (isset($_GET['filter_product_cat']) && !empty($_GET['filter_product_cat'])) {
+			$categories = explode(',', sanitize_text_field($_GET['filter_product_cat']));
+			$tax_query = array(
+				array(
+					'taxonomy' => 'product_cat',
+					'field'    => 'slug',
+					'terms'    => $categories,
+					'operator' => 'IN',
+				),
+			);
+			$query->set('tax_query', $tax_query);
+		}
+
+		if (isset($_GET['filter_main_profile']) && !empty($_GET['filter_main_profile'])) {
+			$main_profiles = explode(',', sanitize_text_field($_GET['filter_main_profile']));
+			$meta_query = array(
+				'relation' => 'OR',
+			);
+
+			foreach ($main_profiles as $profile_value) {
+				$meta_query[] = array(
+					'key'     => 'aroma_effects_main_profile',
+					'value'   => $profile_value,
+					'compare' => 'LIKE',
+				);
+			}
+
+			if (!isset($query->query_vars['meta_query'])) {
+				$query->set('meta_query', $meta_query);
+			} else {
+				$query->query_vars['meta_query'] = array_merge($query->query_vars['meta_query'], $meta_query);
+			}
+		}
+
+
+		if (isset($_GET['filter_brand']) && !empty($_GET['filter_brand'])) {
+			$brands = explode(',', sanitize_text_field($_GET['filter_brand']));
+			$tax_query[] = array(
+				'taxonomy' => 'product_brand',
+				'field'    => 'slug',
+				'terms'    => $brands,
+				'operator' => 'IN',
+			);
+			$query->set('tax_query', $tax_query);
+		}
+	}
+}
+add_action('pre_get_posts', 'custom_product_filter');

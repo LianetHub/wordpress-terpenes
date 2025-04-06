@@ -11,12 +11,12 @@ $promo_image = get_field('promo_image');
         </h1>
         <div class="promo__body">
             <div class="row">
-                <div class="col-7">
+                <div class="col-xl-7 col-lg-6">
                     <div class="promo__desc">
                         <? echo $promo_desc ?>
                     </div>
                 </div>
-                <div class="col-5">
+                <div class="col-xl-5 col-lg-6">
                     <div class="promo__photo">
                         <?
                         if ($promo_image) {

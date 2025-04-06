@@ -20,7 +20,7 @@
         ?>
     <?php endwhile; ?>
 <?php endif; ?>
-<?php require_once(COMPONENTS_PATH . '_clients.php'); ?>
+<!-- <?php require_once(COMPONENTS_PATH . '_clients.php'); ?> -->
 <?php if (have_rows('desc_block_2')): ?>
     <?php while (have_rows('desc_block_2')): the_row(); ?>
 

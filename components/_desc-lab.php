@@ -7,7 +7,7 @@ $columns = get_field('columns');
         <div class="container">
             <div class="desc__row row">
                 <?php foreach ($columns as $item): ?>
-                    <div class="desc__column col-6">
+                    <div class="desc__column col-lg-6">
                         <div class="desc__header">
                             <?php if ($item['columns_image']): ?>
                                 <div class="desc__header-image">

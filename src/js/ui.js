@@ -79,6 +79,11 @@ $(function () {
             $faqItem.next('.faq__item-answer').slideToggle()
         }
 
+        // filter Toggler
+        if ($target.is('.products__filter-toggler')) {
+            $target.next().slideToggle()
+        }
+
     });
 
 

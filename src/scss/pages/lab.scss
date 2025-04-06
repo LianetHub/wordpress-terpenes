@@ -7,14 +7,21 @@
 .info {
 	// .info__wrapper
 	&__wrapper {
-		padding: 4.87rem 0;
 		background: #e8f2fa;
+		padding: 2rem 0;
+		@media (min-width: $md4) {
+			padding: 4.87rem 0;
+		}
 	}
 	// .info__header
 	&__header {
 		display: flex;
-		align-items: center;
 		gap: 1.81rem;
+		flex-direction: column;
+		@media (min-width: $md4) {
+			align-items: center;
+			flex-direction: row;
+		}
 	}
 	// .info__icon
 	&__icon {
@@ -49,9 +56,11 @@
 	&__list {
 		margin-top: 2.06rem;
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
 		gap: 1.25rem;
 		row-gap: 0.87rem;
+		@media (min-width: $md4) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 	// .info__list-item
 	&__list-item {

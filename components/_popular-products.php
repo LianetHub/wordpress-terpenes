@@ -21,7 +21,7 @@
                     while ($loop->have_posts()) : $loop->the_post();
                         global $product;
                 ?>
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-3 col-sm-6">
                             <? require(TEMPLATE_PATH . '_product.php'); ?>
                         </div>
                 <? endwhile;

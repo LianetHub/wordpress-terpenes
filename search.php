@@ -10,7 +10,7 @@ get_header(); ?>
 
 <div class="search">
     <div class="container">
-        <? echo do_shortcode('[woocommerce_product_search show_description="no" limit="20"]') ?>
+
     </div>
 </div>
 

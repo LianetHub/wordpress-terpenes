@@ -29,8 +29,12 @@ body {
 }
 
 .desc {
-	padding: rem(90) 0 rem(60);
+	position: relative;
+	padding: rem(45) 0 rem(60);
 	background: url("@img/splash-decor.svg") 0 0 / auto no-repeat;
+	@media (min-width: $md4) {
+		padding: rem(90) 0 rem(60);
+	}
 	&:has(.desc__content.row-reserse) {
 		background: url("@img/splash-decor-right.svg") 100% center / auto no-repeat;
 	}
@@ -41,19 +45,36 @@ body {
 	&__content {
 		display: flex;
 		justify-content: space-between;
-		gap: 2rem;
-
-		flex-direction: column;
-		@media (min-width: $md3) {
-			align-items: center;
-			flex-direction: row;
-			&.row-reserse {
-				flex-direction: row-reverse;
+		align-items: center;
+		flex-direction: row;
+		gap: 1rem;
+		&.row-reserse {
+			flex-direction: row-reverse;
+			.desc__image {
+				@media (max-width: $md3) {
+					margin-right: 0;
+					margin-left: -25%;
+				}
 			}
+			.desc__title {
+				@media (max-width: $md5) {
+					margin: 0 0 0 -4rem;
+				}
+			}
+		}
+
+		@media (min-width: $md5) {
+			gap: 2rem;
 		}
 	}
 	// .desc__title
 	&__title {
+		text-align: center;
+		margin: 0 -4rem 0 0;
+		@media (min-width: $md5) {
+			margin: 0;
+			text-align: left;
+		}
 	}
 	// .desc__row
 	&__row {
@@ -64,7 +85,12 @@ body {
 		&:nth-child(2) {
 			.desc__header {
 				flex-direction: column;
-				align-items: flex-start;
+				align-items: center;
+				text-align: center;
+				@media (min-width: $md5) {
+					text-align: left;
+					align-items: flex-start;
+				}
 			}
 			.desc__header-image {
 				width: rem(265);
@@ -91,8 +117,7 @@ body {
 	// .desc__text
 	&__text {
 		margin-top: 2.81rem;
-		line-height: 152.847%;
-		font-size: rem(18);
+
 		& ul {
 			margin-top: 2rem;
 			li {
@@ -110,66 +135,150 @@ body {
 		&:has(ul) {
 			font-size: 1.125rem;
 		}
+
+		text-align: center;
+		font-size: 1.0625rem;
+		line-height: 152.847%;
 		@media (min-width: $md5) {
+			font-size: rem(18);
+			text-align: left;
+		}
+		@media (min-width: $md4) {
 			font-size: 1.375rem;
 		}
 	}
 	// .desc__btn
 	&__btn {
-		margin-top: 3.19rem;
 		max-width: 23.75rem;
-		width: 100%;
+
+		margin-top: 2rem;
+		@media (min-width: $md5) {
+			width: 100%;
+			margin-top: 3.19rem;
+		}
 	}
 	// .desc__image
 	&__image {
 		position: relative;
+		width: fit-content;
+		@media (max-width: $md3) {
+			margin-right: -25%;
+		}
 	}
 	// .desc__image-item
 	&__image-item {
 		display: block;
 		flex-shrink: 0;
+
 		&.mask-1 {
 			aspect-ratio: math.div(643, 687);
 			clip-path: url(#desk-mask-1);
+			width: 9.6875rem;
 			& + .desc__icon {
-				top: 0;
-				right: 7rem;
+				right: 0;
+				top: 0.5rem;
+				@media (min-width: $md4) {
+					top: 0;
+					right: 7rem;
+				}
 			}
-			width: rem(443);
+
+			@media (min-width: $md4) {
+				width: rem(300);
+			}
+			@media (min-width: $md3) {
+				width: rem(443);
+			}
 			@media (min-width: $md2) {
 				width: rem(643);
 			}
 		}
 		&.mask-2 {
-			margin-right: -3rem;
 			aspect-ratio: math.div(663, 498);
-
+			width: 9.6875rem;
 			clip-path: url(#desk-mask-2);
 			& + .desc__icon {
-				top: 3rem;
-				left: 7rem;
+				left: 0;
+				top: 0;
+				@media (min-width: $md4) {
+					top: 3rem;
+					left: 7rem;
+				}
 			}
-			width: rem(463);
+
+			@media (min-width: $md4) {
+				width: rem(363);
+			}
+			@media (min-width: $md3) {
+				margin-right: -3rem;
+				width: rem(463);
+			}
 			@media (min-width: $md2) {
 				width: rem(663);
 			}
 		}
 		&.mask-3 {
-			width: rem(549);
 			aspect-ratio: math.div(549, 539);
 			clip-path: url(#desk-mask-3);
+			width: 10rem;
 			& + .desc__icon {
 				bottom: 3rem;
-				right: 7rem;
+				right: 0;
+				@media (min-width: $md5) {
+					right: 7rem;
+				}
+			}
+			@media (min-width: $md5) {
+				width: rem(350);
+			}
+			@media (min-width: $md3) {
+				width: rem(449);
+			}
+			@media (min-width: $md2) {
+				width: rem(549);
 			}
 		}
 		&.mask-4 {
-			width: rem(569);
+			width: 10rem;
 			aspect-ratio: math.div(569, 377);
 			clip-path: url(#desk-mask-4);
 			& + .desc__icon {
-				bottom: 3rem;
-				left: 4rem;
+				bottom: 1rem;
+				@media (min-width: $md4) {
+					bottom: 3rem;
+					left: 4rem;
+				}
+			}
+			@media (min-width: $md5) {
+				width: rem(369);
+			}
+			@media (min-width: $md3) {
+				width: rem(469);
+			}
+			@media (min-width: $md2) {
+				width: rem(569);
+			}
+		}
+		&.mask-5 {
+			width: 10rem;
+			aspect-ratio: math.div(469, 509);
+			clip-path: url(#desk-mask-5);
+			& + .desc__icon {
+				top: 1rem;
+				left: 0;
+				@media (min-width: $md4) {
+					left: -3rem;
+					top: 6rem;
+				}
+			}
+			@media (min-width: $md5) {
+				width: rem(269);
+			}
+			@media (min-width: $md3) {
+				width: rem(369);
+			}
+			@media (min-width: $md2) {
+				width: rem(469);
 			}
 		}
 		& img {
@@ -181,8 +290,6 @@ body {
 	// .desc__icon
 	&__icon {
 		position: absolute;
-		width: 9rem;
-		height: 9rem;
 		flex-shrink: 0;
 		z-index: 2;
 		display: flex;
@@ -190,6 +297,13 @@ body {
 		align-items: center;
 		border-radius: 50%;
 		background: linear-gradient(92deg, #01ecd3 4.16%, #01b5e7 85.09%), #d9d9d9;
+		width: 3.75rem;
+		height: 3.75rem;
+		padding: 1rem;
+		@media (min-width: $md3) {
+			width: 9rem;
+			height: 9rem;
+		}
 	}
 	// .desc__header
 	&__header {
