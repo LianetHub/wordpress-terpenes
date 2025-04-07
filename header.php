@@ -6,10 +6,24 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" itemprop="description" content="описание страницы">
-    <meta name="keywords" itemprop="keywords" content="ключевые слова">
 
-    <!-- WordPress Title -->
+    <meta name="description" content="<?php echo is_single() || is_page() ? strip_tags(get_the_excerpt()) : bloginfo('description'); ?>">
+
+
+    <meta name="keywords" content="<?php
+                                    if (is_single() || is_page()) {
+
+                                        $tags = get_the_tags();
+                                        if ($tags) {
+                                            $keywords = array();
+                                            foreach ($tags as $tag) {
+                                                $keywords[] = $tag->name;
+                                            }
+                                            echo implode(', ', $keywords);
+                                        }
+                                    } ?>">
+
+    <!--  Title -->
     <title><?php wp_title(); ?></title>
 
     <!-- favicon -->
