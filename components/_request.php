@@ -16,7 +16,9 @@
                     </p>
                 </div>
                 <div class="col-lg-6">
-                    <?php echo do_shortcode('[contact-form-7 id="9d9ab13" title="Request Right Now Form"]'); ?>
+                    <div class="request__form">
+                        <?php echo do_shortcode('[contact-form-7 id="9d9ab13" title="Request Right Now Form"]'); ?>
+                    </div>
                 </div>
             </div>
         </div>

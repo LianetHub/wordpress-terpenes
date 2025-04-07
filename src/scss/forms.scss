@@ -195,6 +195,16 @@
 	}
 }
 
+.wpcf7 form.failed .wpcf7-response-output,
+.wpcf7 form.aborted .wpcf7-response-output {
+	color: #dc3232;
+}
+
+.wpcf7-response-output {
+	border: 0 !important;
+	padding: 0 !important;
+}
+
 .btn {
 	position: relative;
 	z-index: 1;
