@@ -428,6 +428,9 @@ $(function () {
     $('.select').each((index, element) => {
         new CustomSelect(element);
     });
+    $('.variations select').each((index, element) => {
+        new CustomSelect(element);
+    });
 
 
     $('input[type="tel"]').each(function () {

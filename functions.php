@@ -25,8 +25,8 @@ function theme_enqueue_scripts()
 	wp_enqueue_script('imask-js', get_template_directory_uri() . '/assets/js/libs/imask.js', array(), null, true);
 	wp_enqueue_script('intlTelInput-js', get_template_directory_uri() . '/assets/js/libs/intlTelInput.min.js', array(), null, true);
 
-	wp_enqueue_script('ui-js', get_template_directory_uri() . '/assets/js/ui.min.js', array(), null, true);
 	wp_enqueue_script('app-js', get_template_directory_uri() . '/assets/js/app.min.js', array(), null, true);
+	wp_enqueue_script('ui-js', get_template_directory_uri() . '/assets/js/ui.min.js', array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
@@ -78,6 +78,13 @@ function custom_cf7_set_email_to($components, $form, $instance)
 
 
 add_theme_support('woocommerce');
+
+add_filter('woocommerce_add_to_cart_redirect', 'custom_add_to_cart_redirect');
+function custom_add_to_cart_redirect($url)
+{
+
+	return wc_get_cart_url();
+}
 
 add_action('wp_ajax_update_cart', 'update_cart');
 add_action('wp_ajax_nopriv_update_cart', 'update_cart');

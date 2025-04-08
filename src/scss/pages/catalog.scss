@@ -325,12 +325,16 @@
 		color: #4599f7;
 		font-size: 1rem;
 	}
+	&__in-cart {
+		color: #4599f7;
+		font-weight: 500;
+	}
 	// .product__cart
 	&__cart {
 		align-self: stretch;
 		display: flex;
 		.quantity {
-			display: none;
+			display: none !important;
 		}
 		.cart {
 			width: 100%;
@@ -355,6 +359,15 @@
 				@extend %ic;
 				@extend .icon-shopping-bag;
 			}
+			&.disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+				&:hover {
+					border: rem(1) solid #02dcd9 !important;
+					color: #4599f7 !important;
+					background: transparent !important;
+				}
+			}
 		}
 		.btn {
 			width: 100%;
@@ -373,6 +386,51 @@
 		.add_to_cart_button {
 			&.added {
 				display: none;
+			}
+			&.disabled {
+				pointer-events: none;
+			}
+		}
+
+		& .variations_form {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			row-gap: rem(15);
+			column-gap: rem(13);
+
+			&::before {
+				display: none !important;
+			}
+			.variations {
+				flex: 0 1 60%;
+				justify-content: flex-start;
+				margin-bottom: 0 !important;
+			}
+			.label {
+				display: none !important;
+			}
+			.reset_variations {
+				display: none !important;
+			}
+			.quantity {
+				display: none !important;
+			}
+			.single_variation_wrap {
+				display: contents;
+			}
+			.woocommerce-variation-add-to-cart {
+				flex: 0 0 100%;
+			}
+			.single_add_to_cart_button {
+				min-width: 100%;
+			}
+		}
+		.woocommerce-variation-price {
+			color: #4599f7 !important;
+			font-size: 1rem;
+			& span {
+				color: inherit !important;
 			}
 		}
 	}
@@ -423,14 +481,10 @@
 		color: #6f6f6f;
 		font-size: 1.125rem;
 		line-height: 146.134%;
+		margin-bottom: 0.81rem;
 	}
 	// .single-product__row
 	&__row {
-		margin-top: 0.81rem;
-		display: flex;
-		align-items: center;
-		flex-wrap: wrap;
-		gap: 1rem;
 	}
 	// .single-product__size
 	&__size {
@@ -449,8 +503,20 @@
 	}
 	// .single-product__cart
 	&__cart {
-		@media (max-width: $md5) {
-			flex: 0 0 100%;
+		margin-top: 0.81rem;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1rem;
+		.variations_form {
+			flex-wrap: nowrap;
+		}
+		.woocommerce-variation-add-to-cart,
+		.btn {
+			flex: 0 1 rem(254) !important;
+		}
+		.variations {
+			flex: 0 1 rem(150) !important;
 		}
 	}
 	// .single-product__info

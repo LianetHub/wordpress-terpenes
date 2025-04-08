@@ -34,42 +34,32 @@ global $product;
 					<p class="single-product__desc">
 						<?php echo $product->get_short_description(); ?>
 					</p>
-					<div class="single-product__row">
-						<div class="single-product__size">
-							<?php
-							$product = wc_get_product(get_the_ID());
-							$attributes = $product->get_attributes();
+					<?php
 
-							if (isset($attributes['pa_sizes'])) :
-								echo '<select name="size" class="select">';
-								echo '<option value="" disabled selected>Select size</option>';
-								foreach ($attributes['pa_sizes']->get_terms() as $term) :
-									echo '<option value="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</option>';
-								endforeach;
-								echo '</select>';
-							endif;
-							?>
-						</div>
-						<div class="single-product__price">
-							<?php echo $product->get_price_html(); ?>
-						</div>
+					$product_id = get_the_ID();
+					$in_cart = false;
+
+					foreach (WC()->cart->get_cart() as $cart_item) {
+						$cart_product = $cart_item['data'];
+						if (
+							$cart_product->get_id() == $product_id ||
+							$cart_product->get_parent_id() == $product_id
+						) {
+							$in_cart = true;
+							break;
+						}
+					}
+
+					if ($in_cart) : ?>
+						<p class="product__in-cart">Product added to cart</p>
 						<div class="single-product__cart product__cart">
-							<?php
-
-							$product_id = get_the_ID();
-							$in_cart = false;
-
-							if (WC()->cart->find_product_in_cart(WC()->cart->generate_cart_id($product_id))) {
-								$in_cart = true;
-							}
-
-							if ($in_cart) : ?>
-								<a href="<?php echo esc_url(WC()->cart->get_remove_url(WC()->cart->generate_cart_id($product_id))); ?>" class="btn btn-secondary icon-shopping-bag">remove from cart</a>
-							<?php else : ?>
-								<?php woocommerce_template_single_add_to_cart(); ?>
-							<?php endif; ?>
+							<a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="btn btn-secondary icon-shopping-bag">Go to cart</a>
 						</div>
-					</div>
+					<?php else : ?>
+						<div class="single-product__cart product__cart">
+							<?php woocommerce_template_single_add_to_cart(); ?>
+						</div>
+					<?php endif; ?>
 					<div class="single-product__info">
 						<div class="row">
 							<?php $aroma_effects = get_field('aroma_effects') ?>
