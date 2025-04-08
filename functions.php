@@ -66,6 +66,17 @@ function set_global_acf_fields()
 
 add_action('wp', 'set_global_acf_fields');
 add_filter('wpcf7_autop_or_not', '__return_false');
+add_filter('wpcf7_mail_components', 'custom_cf7_set_email_to', 10, 3);
+function custom_cf7_set_email_to($components, $form, $instance)
+{
+	$email = get_field('contact_form_email', 'option');
+	if ($email) {
+		$components['recipient'] = $email;
+	}
+	return $components;
+}
+
+
 add_theme_support('woocommerce');
 
 add_action('wp_ajax_update_cart', 'update_cart');
