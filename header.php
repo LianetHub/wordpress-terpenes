@@ -37,19 +37,19 @@
 
     <!-- Open Graph  -->
     <meta property="og:type" content="business.business">
-    <meta property="og:title" content="">
+    <meta property="og:title" content="<?php wp_title(); ?>">
     <meta property="og:description" content="<?php bloginfo('description'); ?>">
     <meta property="og:url" content="<?php echo esc_url(get_permalink()); ?>">
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/OG.png">
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/OG.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="627">
-    <meta property="og:site_name" content="CME">
+    <meta property="og:site_name" content="<?php wp_title(); ?>">
     <meta property="og:locale" content="ru_RU">
     <!-- Open Graph -->
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="">
+    <meta property="twitter:title" content="<?php wp_title(); ?>">
     <meta property="twitter:description" content="<?php bloginfo('description'); ?>">
     <meta property="twitter:site" content="@site_handle">
     <meta property="twitter:url" content="<?php echo esc_url(get_permalink()); ?>">
