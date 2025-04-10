@@ -86,6 +86,15 @@ function custom_add_to_cart_redirect($url)
 	return wc_get_cart_url();
 }
 
+add_filter('woocommerce_dropdown_variation_attribute_options_args', 'change_all_variation_default_text', 10, 1);
+
+function change_all_variation_default_text($args)
+{
+	$args['show_option_none'] = 'Select Size';
+	return $args;
+}
+
+
 add_action('wp_ajax_update_cart', 'update_cart');
 add_action('wp_ajax_nopriv_update_cart', 'update_cart');
 
