@@ -3,8 +3,8 @@
         <div class="header__body">
             <a href="<?php echo home_url(); ?>" class="header__logo">
                 <picture>
-                    <source media="(min-width: 991.98px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/logo.png">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-mobile.png" alt="Logo">
+                    <source media="(min-width: 991.98px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-mobile.svg" alt="Logo">
                 </picture>
             </a>
             <?php

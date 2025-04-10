@@ -15,7 +15,7 @@ $promo_image = get_field('promo_image');
                     <p class="promo__subtitle subtitle">
                         <? echo $promo_subtitle ?>
                     </p>
-                    <a href="#request" class="promo__btn btn btn-primary btn-fullwidth icon-arrow">Request samples</a>
+                    <a href="#request" class="promo__btn btn btn-primary btn-fullwidth icon-arrow">Request sample</a>
                 </div>
             </div>
             <?php if ($promo_image): ?>

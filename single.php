@@ -10,7 +10,7 @@
                         <?php if (has_post_thumbnail()) : ?>
                             <?php the_post_thumbnail('full'); ?>
                         <?php else : ?>
-                            <img src=" <?php echo get_template_directory_uri(); ?>/assets/img/3-4-thumb.png" alt="Default Image" />
+                            <img src=" <?php echo get_template_directory_uri(); ?>/assets/img/3-4-thumb.svg" alt="Default Image" />
                         <?php endif; ?>
                     </div>
                 </div>

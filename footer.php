@@ -26,10 +26,7 @@
                 <div class="col-md-6">
                     <div class="footer__main">
                         <a href="/" class="footer__logo">
-                            <picture>
-                                <source media="(min-width: 767.98px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/logo-white.png">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-white-mobile.png" alt="Logo">
-                            </picture>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-white.svg" alt="Logo">
                         </a>
                         <?php
                         wp_nav_menu([

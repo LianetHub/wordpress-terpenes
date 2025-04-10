@@ -22,7 +22,6 @@ $(function () {
 
 
 
-
     function updateURL() {
         var selectedCategories = [];
         var selectedMainProfiles = [];

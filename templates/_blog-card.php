@@ -3,7 +3,7 @@
         <?php if (has_post_thumbnail()) : ?>
             <?php the_post_thumbnail('full'); ?>
         <?php else : ?>
-            <img src=" <?php echo get_template_directory_uri(); ?>/assets/img/16-9-thumb.png" alt="Default Image" />
+            <img src=" <?php echo get_template_directory_uri(); ?>/assets/img/16-9-thumb.svg" alt="Default Image" />
         <?php endif; ?>
     </a>
     <div class="blog__card-body">
